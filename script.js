@@ -16,12 +16,12 @@ const SCISSORS_ROCK = "You lose! Rock beats Scissors";
 
 const computerOptions = ["ROCK", "PAPER", "SCISSORS"];
 
-let playerScore = 0;
-let computerScore = 0;
-
 function playGame(roundNum) {
     let playerChoice;
     let computerChoice;
+
+    let playerScore = 0;
+    let computerScore = 0;
 
     for(i = 0; i < roundNum; i++) {
         playerChoice = getPlayerChoice();
@@ -30,10 +30,10 @@ function playGame(roundNum) {
         playRound(playerChoice, computerChoice);
     }
 
-    declareWinner(playerScore, computerScore);
+    declareWinner(playerScore, computerScore, playerScore, computerScore);
 }
 
-function playRound(playerChoice, computerChoice) {
+function playRound(playerChoice, computerChoice, playerScore, computerScore) {
     if(playerChoice === "ROCK") {
         if(computerChoice === "ROCK") {
             console.log(ROCK_ROCK);
@@ -79,10 +79,10 @@ function getComputerChoice(options) {
     return options[rand]
 }
 
-function declareWinner(player, computer) {
-    if(player > computer) {
+function declareWinner(playerScore, computerScore) {
+    if(playerScore > computerScore) {
         console.log(PLAYER_WIN);
-    } else if(player < computer) {
+    } else if(playerScore < computerScore) {
         console.log(COMPUTER_WIN);
     } else {
         console.log(GAME_DRAW);
